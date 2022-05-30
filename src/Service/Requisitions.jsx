@@ -3,7 +3,7 @@ import axios from "axios";
 const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit",
     SIGNUP_URL = URL + "/auth/sign-up",
     LOGIN_URL = URL + "/auth/login",
-    HABITS_URL = URL + "/habits";
+    HABITS_URL = URL + "/habits/";
 
 export function register(newUser) {
     const promise = axios.post(SIGNUP_URL, newUser);
@@ -19,3 +19,15 @@ export function getHabits(token) {
     const promise = axios.get(HABITS_URL, { headers: { Authorization: `Bearer ${token}`}});
     return promise;
 }
+
+export function postHabits(token, habit) {
+    const promise = axios.post(HABITS_URL, habit, { headers: { Authorization: `Bearer ${token}`}});
+    return promise;
+}
+
+export function deleteHabits(token, id) {
+    const promise = axios.delete(HABITS_URL + id, { headers: { Authorization: `Bearer ${token}`}});
+    return promise;
+}
+// piratinhaque.estica@driven.com.br
+// carne

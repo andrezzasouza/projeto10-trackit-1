@@ -12,6 +12,17 @@ const GlobalStyles = createGlobalStyle`
     p, h2 {
         font-family: "Lexend Deca", sans-serif;
     }
+    button {
+        cursor: pointer;
+        border: none;
+        background-color: #FFFFFF;
+    }
+    ion-icon {
+        width: 16px;
+        height: 18px;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
     `;
 
 export default GlobalStyles;

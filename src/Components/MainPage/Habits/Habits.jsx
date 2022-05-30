@@ -1,27 +1,39 @@
 import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
 import UserContext from "../../../contexts/UserContext";
-import { getHabits } from "../../../Service/Requisitions";
+import { getHabits, deleteHabits } from "../../../Service/Requisitions";
 import Habit from "./Habit";
 import Footer from "../../shared/Footer";
 import Header from "../../shared/Header";
+import NewHabit from "./NewHabit";
 import Body from "../../shared/Body";
-
-
-
 
 export default function Habits() {
     const [habits, setHabits] = useState([]);
     const [newHabit, setNewHabit] = useState(false);
     const { user } = useContext(UserContext);
+    const [reload, setReload] = useState(false);
+    const [habit, setHabit] = useState({
+        name: "",
+        days: [],
+    });
 
     useEffect(() => {
         const promise = getHabits(user.token);
         promise.then(response => {
             setHabits(response.data);
         });
-        promise.catch(error => {console.log(error)});
-    }, [user]);
+    }, [user, reload]);
+
+    function deleteHabit(habit) {
+        let resultado = window.confirm("Deseja realmente excluir esse hábito?");
+        if (resultado === true) {
+            const promise = deleteHabits(user.token, habit.id);
+            promise.then(() => {
+                setReload(!reload);
+            });
+        }
+    }
 
     return(
         <>
@@ -32,9 +44,9 @@ export default function Habits() {
                     <button onClick={() => setNewHabit(true)}>+</button>
                 </MyHabits>
                 <HabitsList>
-                    {newHabit === false ? "" : <NewHabit />}
+                    {newHabit === false ? "" : <NewHabit setNewHabit={setNewHabit} reload={reload} setReload={setReload} habit={habit} setHabit={setHabit}/>}
                     {habits.length !== 0 ? 
-                        habits.map((habit, index) => {<Habit habit={habit} key={index} />})
+                        habits.map((habit, index) => <Habit habit={habit} key={index} index={index} deleteHabit={() => deleteHabit(habit)}/>)
                         : 
                         <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>}
                 </HabitsList>

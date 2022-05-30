@@ -22,9 +22,9 @@ export default function Login() {
             setUser(response.data);
             navigate("/hoje", { replace: true });
         });
-        promise.catch(() => {
+        promise.catch((error) => {
             setLoad(false);
-            alert("Usuário ou senha inválidos ou não cadastrados");
+            alert(error.response.data.message);
         })
     }
     return(

@@ -23,14 +23,14 @@ export default function SignUp() {
             alert("Cadastrado com Sucesso");
             navigate("/", {replace: true})
         });
-        promise.catch(() => {
+        promise.catch((error) => {
             setLoad(false);
-            alert("Ocorreu um erro durante o cadastro.\nTente novamente")
+            alert(error.response.data.message);
         });
     }
 
     return(
-    <AutenticationPages p="Já possui uma conta? Faça login!" link="/" onSubmit={handleSubmit} load={load}>    
+    <AutenticationPages p="Já tem uma conta? Faça login!" link="/" onSubmit={handleSubmit} load={load}>    
             <input 
                 type="email" 
                 required 
