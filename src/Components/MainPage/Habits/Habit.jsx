@@ -14,7 +14,7 @@ export default function Habit({ habit, deleteHabit}) {
 }
 
 const Container = styled.div`
-    width: 340px;
+    width: 100%;
     height: 91px;
     background-color: #FFFFFF;
     border-radius: 5px;

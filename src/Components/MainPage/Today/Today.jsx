@@ -36,7 +36,10 @@ export default function Today() {
             ],
         });
         const checkedHabits = todayHabits.filter(habit => habit.done);
+    useEffect(() => {
         setPercentage(Math.round((checkedHabits.length/todayHabits.length)*100));
+    }, [checkedHabits, todayHabits, setPercentage]);
+        
     return(
         <>
             <Header />
