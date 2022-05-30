@@ -8,6 +8,7 @@ import Login from "./Components/LoginAndSignUp/Login";
 import SignUp from "./Components/LoginAndSignUp/SignUp";
 import Today from "./Components/MainPage/Today/Today";
 import Habits from "./Components/MainPage/Habits/Habits";
+import History from "./Components/MainPage/History";
 
 export default function App() {
     const [user, setUser] = useState("");

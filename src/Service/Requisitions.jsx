@@ -44,5 +44,3 @@ export function uncheckHabit(token, id) {
     const promise = axios.post(HABITS_URL + id + "/uncheck", {}, { headers: { Authorization: `Bearer ${token}`}});
     return promise;
 }
-// piratinhaque.estica@driven.com.br
-// carne
