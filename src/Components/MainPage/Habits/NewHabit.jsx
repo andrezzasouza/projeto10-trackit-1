@@ -22,6 +22,10 @@ export default function NewHabit({habit, setNewHabit , setHabit, reload, setRelo
             setLoad(false);
             setNewHabit(false);
             setReload(!reload);
+            setHabit({
+                name: "",
+                days: [],
+            });
         });
         promise.catch((error) => {
             setLoad(false);

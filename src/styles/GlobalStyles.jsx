@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     }
     p, h2 {
         font-family: "Lexend Deca", sans-serif;
+        font-weight: 400;
     }
     button {
         cursor: pointer;

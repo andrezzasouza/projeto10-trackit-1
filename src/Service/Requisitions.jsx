@@ -29,5 +29,20 @@ export function deleteHabits(token, id) {
     const promise = axios.delete(HABITS_URL + id, { headers: { Authorization: `Bearer ${token}`}});
     return promise;
 }
+
+export function getTodayHabits(token) {
+    const promise = axios.get(HABITS_URL + "today", { headers: { Authorization: `Bearer ${token}`}});
+    return promise;
+}
+
+export function checkHabit(token, id) {
+    const promise = axios.post(HABITS_URL + id + "/check", {}, { headers: { Authorization: `Bearer ${token}`}});
+    return promise;
+}
+
+export function uncheckHabit(token, id) {
+    const promise = axios.post(HABITS_URL + id + "/uncheck", {}, { headers: { Authorization: `Bearer ${token}`}});
+    return promise;
+}
 // piratinhaque.estica@driven.com.br
 // carne
